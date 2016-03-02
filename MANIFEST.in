@@ -1,1 +1,3 @@
 include README.rst
+recursive-include groot/templates *.html
+global-exclude .DS_Store

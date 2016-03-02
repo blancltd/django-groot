@@ -18,6 +18,7 @@ setup(
     maintainer_email='studio@blanc.ltd.uk',
     platforms=['any'],
     packages=find_packages(),
+    include_package_data=True,
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
