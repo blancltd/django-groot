@@ -23,6 +23,7 @@ PERM_PREFIX = 'perm_'
 
 
 class GrootAdminMixin(object):
+    change_form_template = 'admin/groot_change_form.html'
     actions = [update_permissions]
 
     def get_urls(self):

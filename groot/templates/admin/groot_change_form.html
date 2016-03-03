@@ -1,0 +1,11 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_urls %}
+
+
+{% block object-tools-items %}
+<li>
+    {% url opts|admin_urlname:'groot' original.pk|admin_urlquote as groot_url %}
+    <a href="{% add_preserved_filters groot_url %}" class="grootlink">{% trans "Group Permissions" %}</a>
+</li>
+{{ block.super }}
+{% endblock object-tools-items %}
