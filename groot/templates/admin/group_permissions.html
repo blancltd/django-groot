@@ -55,7 +55,7 @@
     <br>
 {% endif %}
 
-<form action="" method="POST">
+<form action="" method="POST" id="group-permissions">
     {% csrf_token %}
 
     {{ formset.management_form }}
