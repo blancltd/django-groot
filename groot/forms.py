@@ -26,7 +26,7 @@ class BasePermissionForm(forms.Form):
         return forms.Media(js=['admin/js/%s' % url for url in js]) + form_media
 
 
-def get_permission_form(model, perm_choices):
+def get_permission_form(model):
     class PermissionForm(BasePermissionForm):
         permissions = forms.MultipleChoiceField(
             choices=[(x.codename, x.name) for x in get_perms_for_model(model)], required=True,
