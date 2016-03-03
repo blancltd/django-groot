@@ -8,7 +8,7 @@ from django.contrib.auth.models import Group
 from django.core.exceptions import PermissionDenied
 from django.db import transaction
 from django.forms import formset_factory
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
 from django.template.response import TemplateResponse
 from django.utils.encoding import force_text
 from django.utils.html import escape
@@ -121,6 +121,8 @@ class GrootAdminMixin(object):
                 }, messages.SUCCESS)
             else:
                 self.message_user(request, _('No permissions were updated.'), messages.INFO)
+
+            return HttpResponseRedirect(request.path)
 
         if django.VERSION >= (1, 8):
             context = self.admin_site.each_context(request)
