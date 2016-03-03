@@ -10,7 +10,7 @@ with open('README.rst', 'r', 'utf-8') as f:
 
 setup(
     name='django-groot',
-    version='0.0.1',
+    version='0.1',
     description='Django Groot',
     long_description=readme,
     url='https://github.com/blancltd/django-groot',
