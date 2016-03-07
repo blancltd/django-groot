@@ -1,0 +1,11 @@
+[paths]
+source =
+    groot/
+    .tox/*/lib/python*/site-packages/groot/
+
+[run]
+branch = true
+parallel = true
+omit =
+    */groot/tests/*
+    */groot/migrations/*
