@@ -1,3 +1,4 @@
+import django
 from django import forms
 from django.conf import settings
 from django.contrib.admin.templatetags.admin_static import static
@@ -17,9 +18,10 @@ class BasePermissionForm(forms.Form):
     @property
     def media(self):
         form_media = super(BasePermissionForm, self).media
-        extra = '' if settings.DEBUG else '.min'
+        jquery_prefix = 'vendor/jquery/' if django.VERSION >= (1, 9) else ''
+        jquery_suffix = '' if settings.DEBUG else '.min'
         js = [
-            'jquery%s.js' % extra,
+            '%sjquery%s.js' % (jquery_prefix, jquery_suffix),
             'jquery.init.js',
             'SelectBox.js',
             'SelectFilter2.js',
