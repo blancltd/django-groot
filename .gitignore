@@ -7,5 +7,6 @@ MANIFEST
 # Testing
 .coverage
 .coverage.*
+coverage.xml
 .tox
 htmlcov
