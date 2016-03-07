@@ -1,3 +1,5 @@
+import os
+
 
 DATABASES = {
     'default': {
@@ -8,7 +10,10 @@ DATABASES = {
 
 SECRET_KEY = 'groot'
 
+# Static files
 STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATIC_ROOT = os.environ['STATIC_ROOT']
 
 MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',

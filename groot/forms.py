@@ -1,5 +1,6 @@
 from django import forms
 from django.conf import settings
+from django.contrib.admin.templatetags.admin_static import static
 from django.contrib.admin.widgets import FilteredSelectMultiple
 from django.contrib.auth.models import Group
 from django.core.exceptions import ValidationError
@@ -23,7 +24,7 @@ class BasePermissionForm(forms.Form):
             'SelectBox.js',
             'SelectFilter2.js',
         ]
-        return forms.Media(js=['admin/js/%s' % url for url in js]) + form_media
+        return forms.Media(js=[static('admin/js/%s' % url) for url in js]) + form_media
 
 
 def get_permission_form(model):
