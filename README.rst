@@ -1,3 +1,6 @@
+.. image:: groot.png
+   :alt: Groot
+
 Django Groot
 ============
 
