@@ -4,11 +4,13 @@
 [django-guardian]: https://github.com/django-guardian/django-guardian
 [pip]: https://pip.pypa.io/
 
-An alternative admin interface for managing group permissions with
-`[django-guardian]`. Groot requires django-guardian for maintaining permissions,
+[django-guardian]. Groot requires django-guardian for maintaining permissions,
 however Groot only focuses on groups for object permissions - per user object
 level permissions aren't allowed for simplicity.
 
+Groot is named after a team discussion about the best 'guardian' in the galaxy!
+
+>>>>>>> Tidy markdown
 ## Installation
 
 Using [pip]:
@@ -17,7 +19,11 @@ Using [pip]:
 $ pip install django-groot
 ```
 
+<<<<<<< d87862183c913cb26ffd269bb2553586536b3424
 Follow the instructions for installing `[django-guardian]` if you haven't
+=======
+Follow the instructions for installing [django-guardian] if you haven't
+>>>>>>> Tidy markdown
 already.
 
 Edit your Django project's settings module, and add ``groot``:
