@@ -1,3 +1,4 @@
+<img alt="Groot" align="right" src="https://cloud.githubusercontent.com/assets/448775/18818105/10d88b0c-8369-11e6-8155-b3c18b617c7c.png">
 Django Groot
 ============
 
