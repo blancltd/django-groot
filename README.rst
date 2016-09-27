@@ -1,4 +1,9 @@
- # Django Groot
+.. image:: https://cloud.githubusercontent.com/assets/448775/18818105/10d88b0c-8369-11e6-8155-b3c18b617c7c.png
+   :alt: Groot
+   :align: right
+   
+Django Groot
+============
 
 An alternative admin interface for managing group permissions with
 `django-guardian <https://github.com/django-guardian/django-guardian>`__.
