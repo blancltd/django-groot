@@ -52,7 +52,7 @@ class BaseGroupPermissionForm(forms.Form):
 
 def get_group_permission_form(model_perms):
     class GroupPermissionForm(BaseGroupPermissionForm):
-        def __init__(self,  *args, **kwargs):
+        def __init__(self, *args, **kwargs):
             super(GroupPermissionForm, self).__init__(*args, **kwargs)
 
             for perm in model_perms:
