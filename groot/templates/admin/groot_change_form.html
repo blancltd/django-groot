@@ -4,11 +4,13 @@
 
 
 {% block object-tools-items %}
-  <li>
-    {% url opts|admin_urlname:'groot' original.pk|admin_urlquote as groot_url %}
-    <a href="{% add_preserved_filters groot_url %}" class="grootlink">
-      {% trans 'Group Permissions' %}
-    </a>
-  </li>
+  {% if user.is_superuser %}
+    <li>
+      {% url opts|admin_urlname:'groot' original.pk|admin_urlquote as groot_url %}
+      <a href="{% add_preserved_filters groot_url %}" class="grootlink">
+        {% trans 'Group Permissions' %}
+      </a>
+    </li>
+  {% endif %}
   {{ block.super }}
 {% endblock object-tools-items %}
