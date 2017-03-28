@@ -1,6 +1,5 @@
 from functools import update_wrapper
 
-import django
 from django.contrib import messages
 from django.contrib.admin.options import csrf_protect_m
 from django.contrib.admin.utils import model_ngettext, unquote
@@ -125,10 +124,7 @@ class GrootAdminMixin(object):
 
             return HttpResponseRedirect(request.path)
 
-        if django.VERSION >= (1, 8):
-            context = self.admin_site.each_context(request)
-        else:
-            context = self.admin_site.each_context()
+        context = self.admin_site.each_context(request)
 
         context.update({
             'title': _('Group permissions: %s') % force_text(obj),

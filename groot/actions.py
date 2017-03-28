@@ -1,4 +1,3 @@
-import django
 from django.contrib import messages
 from django.contrib.admin import helpers
 from django.contrib.admin.utils import model_ngettext
@@ -66,10 +65,7 @@ def update_permissions(modeladmin, request, queryset):
     else:
         objects_name = force_text(opts.verbose_name_plural)
 
-    if django.VERSION >= (1, 8):
-        context = modeladmin.admin_site.each_context(request)
-    else:
-        context = modeladmin.admin_site.each_context()
+    context = modeladmin.admin_site.each_context(request)
 
     context.update({
         'title': _('Update permissions'),
