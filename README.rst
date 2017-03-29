@@ -37,7 +37,7 @@ Edit your Django project's settings module, and add ``groot``:
 Usage
 -----
 
-Add `GrootAdminMixin` to the admin class you want Groot to be used on:
+Add ``GrootAdminMixin`` to the admin class you want Groot to be used on:
 
 .. code-block:: python
 
@@ -48,5 +48,12 @@ Add `GrootAdminMixin` to the admin class you want Groot to be used on:
 
 
     @admin.register(Post)
-    class PostAdmin(GrootAdminMixin, BasePageAdmin):
+    class PostAdmin(GrootAdminMixin, admin.ModelAdmin):
         pass
+
+To limit the permissions which can be edited, add a ``groot_permissions`` attribute:
+
+.. code-block:: python
+
+    class PostAdmin(GrootAdminMixin, admin.ModelAdmin):
+        groot_permissions = ('change_post', 'delete_post')

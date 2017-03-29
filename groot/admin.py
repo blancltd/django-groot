@@ -3,7 +3,8 @@ from functools import update_wrapper
 from django.contrib import messages
 from django.contrib.admin.options import csrf_protect_m
 from django.contrib.admin.utils import model_ngettext, unquote
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, Permission
+from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
 from django.db import transaction
 from django.forms import formset_factory
@@ -12,7 +13,7 @@ from django.template.response import TemplateResponse
 from django.utils.encoding import force_text
 from django.utils.html import escape
 from django.utils.translation import ugettext as _
-from guardian.shortcuts import assign_perm, get_groups_with_perms, get_perms_for_model, remove_perm
+from guardian.shortcuts import assign_perm, get_groups_with_perms, remove_perm
 
 from .actions import update_permissions
 from .forms import get_group_permission_form
@@ -24,6 +25,7 @@ PERM_PREFIX = 'perm_'
 class GrootAdminMixin(object):
     change_form_template = 'admin/groot_change_form.html'
     actions = [update_permissions]
+    groot_permissions = ()
 
     def get_urls(self):
         from django.conf.urls import url
@@ -39,6 +41,18 @@ class GrootAdminMixin(object):
         return [
             url(r'^(.+)/groot/$', wrap(self.groot_view), name='%s_%s_groot' % info),
         ] + super(GrootAdminMixin, self).get_urls()
+
+    def get_groot_permissions(self, request):
+        """
+        Returns a list of permissions which can be edited as part of the Group Permissions page.
+        """
+        permission_content_type = ContentType.objects.get_for_model(self.model)
+        permissions = Permission.objects.filter(content_type=permission_content_type)
+
+        if self.groot_permissions:
+            permissions = permissions.filter(codename__in=self.groot_permissions)
+
+        return permissions
 
     @csrf_protect_m
     @transaction.atomic
@@ -64,7 +78,9 @@ class GrootAdminMixin(object):
         group_list = Group.objects.all()
         group_count = group_list.count()
 
-        GroupPermissionForm = get_group_permission_form(model_perms=get_perms_for_model(model))
+        GroupPermissionForm = get_group_permission_form(
+            model_perms=self.get_groot_permissions(request),
+        )
         GroupPermissionFormSet = formset_factory(
             GroupPermissionForm, extra=0, min_num=group_count, validate_min=True,
             max_num=group_count)
