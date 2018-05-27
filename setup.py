@@ -13,7 +13,7 @@ setup(
     version='0.1.1',
     description='Django Groot',
     long_description=readme,
-    url='https://github.com/blancltd/django-groot',
+    url='https://github.com/developersociety/django-groot',
     maintainer='Blanc Ltd',
     maintainer_email='studio@blanc.ltd.uk',
     platforms=['any'],
